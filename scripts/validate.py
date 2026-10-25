@@ -626,13 +626,14 @@ def check_singers(c, s, profiles):
 
 def check_singer_img(c, img, p):
     if not c.obj(img, p, required=("src", "w", "h", "pos"),
-                 optional=("author", "lic", "lic_u", "file", "sm", "smw", "smh")):
+                 optional=("author", "lic", "lic_u", "file", "sm", "smw", "smh", "alt")):
         return
     remote = isinstance(img.get("src"), str) and img["src"].startswith(("http://", "https://"))
     c.get(img, "src", p, c.image)
     for k in ("w", "h"):
         c.get(img, k, p, c.integer, positive=True)
     c.get(img, "pos", p, c.text)
+    c.get(img, "alt", p, c.lang)
     if remote and not ("author" in img and "lic" in img):
         c.warn(p, 'remote photo without "author" and "lic" credits')
     for k in ("author", "lic"):

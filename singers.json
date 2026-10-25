@@ -829,6 +829,22 @@
     "en": "Georgian baritone in the Italian dramatic repertoire: Rigoletto, Scarpia and Macbeth at the Met and in Europe's leading houses.",
     "it": "Baritono georgiano del repertorio drammatico italiano: Rigoletto, Scarpia e Macbeth al Metropolitan e nei grandi teatri europei.",
     "ka": "ქართველი ბარიტონი იტალიური დრამატული რეპერტუარით: რიგოლეტო, სკარპია და მაკბეტი Met-სა და ევროპის წამყვან თეატრებში."
+   },
+   "img": {
+    "src": "images/stars/george-gagnidze-dario-acosta-500.jpg",
+    "w": 500,
+    "h": 625,
+    "pos": "50% 20%",
+    "author": "Dario Acosta",
+    "lic": "Used with permission",
+    "sm": "images/stars/george-gagnidze-dario-acosta-250.jpg",
+    "smw": 250,
+    "smh": 312,
+    "alt": {
+     "en": "Portrait of the baritone George Gagnidze in a dark velvet jacket",
+     "it": "Ritratto del baritono George Gagnidze con una giacca di velluto scuro",
+     "ka": "ბარიტონ გია გაგნიძის პორტრეტი მუქ ხავერდის პიჯაკში"
+    }
    }
   }
  ]

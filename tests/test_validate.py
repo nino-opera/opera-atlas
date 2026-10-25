@@ -287,6 +287,14 @@ class ValidatorTest(unittest.TestCase):
         self.assertEqual(r.errors, [])
         self.assertReported(r.warnings, "#maria-callas", "no photo")
 
+    def test_photo_alt_text_must_be_trilingual(self):
+        img = self.files["singers.json"]["singers"][0]["img"]
+        img["alt"] = L("Portrait")
+        self.assertEqual(self.run_validator().errors, [])
+        del img["alt"]["ka"]
+        r = self.run_validator()
+        self.assertReported(r.errors, "#maria-callas.img.alt", "missing language(s): ka")
+
     def test_unlisted_profile_is_warning(self):
         self.files["singers/extra.json"] = dict(self.files["singers/maria-callas.json"], id="extra")
         r = self.run_validator()

@@ -637,7 +637,7 @@ function stMatch(s){
   return h.indexOf(q)>-1;
 }
 function stMono(n){return n.split(/\s+/).map(function(w){return w.charAt(0)}).join("").slice(0,2).toUpperCase()}
-function stImg(s,eager,hi,card){var i=s.img,u=i&&card&&i.sm?i.sm:(i?i.src:""),w=i&&card&&i.sm?i.smw:(i?i.w:0),h=i&&card&&i.sm?i.smh:(i?i.h:0);return '<span class="stimg"><span class="mono" aria-hidden="true">'+esc(stMono(s.name.en))+'</span>'+(i?'<img src="'+esc(u)+'" alt="" width="'+w+'" height="'+h+'" decoding="async"'+(eager?'':' loading="lazy"')+(hi?' fetchpriority="high"':'')+' style="object-position:'+esc(i.pos||"50% 20%")+'">':'')+'</span>'}
+function stImg(s,eager,hi,card){var i=s.img,u=i&&card&&i.sm?i.sm:(i?i.src:""),w=i&&card&&i.sm?i.smw:(i?i.w:0),h=i&&card&&i.sm?i.smh:(i?i.h:0);return '<span class="stimg"><span class="mono" aria-hidden="true">'+esc(stMono(s.name.en))+'</span>'+(i?'<img src="'+esc(u)+'" alt="'+esc(i.alt?T(i.alt):"")+'" width="'+w+'" height="'+h+'" decoding="async"'+(eager?'':' loading="lazy"')+(hi?' fetchpriority="high"':'')+' style="object-position:'+esc(i.pos||"50% 20%")+'">':'')+'</span>'}
 function stCard(s,n){
   var l=stL(),href=s.to?"#"+s.to:"#st/"+s.id,att=s.to?'data-go="'+esc(s.to)+'"':'data-st="'+esc(s.id)+'"';
   var yrs=s.born?(s.born+(s.died?"–"+s.died:"")):"";
@@ -664,7 +664,7 @@ function stProfile(){
   var l=stL(),s=stFind(stSlug),P=STP[stSlug];
   var back='<p class="stback"><a href="#st" data-st="">'+esc(l.back)+'</a></p>';
   if(!P||!s)return back+'<p class="empty">'+esc(l.nf)+'</p>';
-  var i=s.img,cred=i?l.ph+': '+esc(i.author)+' · <a href="'+esc(i.lic_u)+'" target="_blank" rel="noopener">'+esc(i.lic)+'</a> · <a href="'+esc(i.file)+'" target="_blank" rel="noopener">Wikimedia Commons</a>':'';
+  var i=s.img,cred=i?l.ph+': '+esc(i.author)+(i.lic_u?' · <a href="'+esc(i.lic_u)+'" target="_blank" rel="noopener">'+esc(i.lic)+'</a>':(i.lic?' · '+esc(i.lic):''))+(i.file?' · <a href="'+esc(i.file)+'" target="_blank" rel="noopener">Wikimedia Commons</a>':''):'';
   var h=back+'<div class="hero nino-hero st-hero"><div class="portrait">'+stImg(s,true)+'</div><div class="hero-in"><span class="stamp">'+esc(T(P.vtype))+'</span><h1>'+esc(T(P.name))+'</h1><p class="fullname">'+esc(T(P.life))+'</p>'+(cred?'<p class="pcred">'+cred+'</p>':'')+'</div></div>';
   h+=(T(P.bio)||[]).map(function(p){return '<p class="stbio">'+esc(p)+'</p>'}).join("");
   h+='<h2 class="block-title" style="margin-top:22px">'+esc(l.roles)+'</h2><ul class="strl">'+P.roles.map(function(r){return '<li><b>'+esc(r.n)+'</b> <span>'+esc(r.c)+'</span></li>'}).join("")+'</ul>';
